@@ -3,6 +3,7 @@ package com.example.effectivejava;
 import java.util.Comparator;
 
 /**
+ * 《effective java》-14：考虑是否实现comparable
  * 如果你正在写一个明显具有自然顺序的值类，如字母顺序，数字大小顺序或者时间先后顺序，那么你就应该实现Comparable接口
  * 确保符合以下要求：
  * 1、sgn(x.compareTo(y)) == -sgn(y. compareTo(x))成立

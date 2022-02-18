@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.EmptyStackException;
 
 /**
- * 消除过时引用
+ * 《effective java》-7：消除过时的对象引用
  * @author Don
  * @date 2021/12/23.
  */

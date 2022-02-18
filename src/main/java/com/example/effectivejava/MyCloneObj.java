@@ -1,7 +1,7 @@
 package com.example.effectivejava;
 
 /**
- * 谨慎地覆盖clone：
+ * 《effective java》-13：谨慎地覆盖clone
  * 实现Object的clone方法必须实现Cloneable接口
  * @author Don
  * @date 2022/2/11.

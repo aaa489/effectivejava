@@ -3,6 +3,7 @@ package com.example.effectivejava;
 import java.io.*;
 
 /**
+ * 《effective java》-9：优先使用try-with-resources而不是try-finally
  * 使用try-with-resource代替try-finally来关闭资源
  * 1、防止忘记调用close函数，虽然资源本身会通过finalize()函数进行关闭，但是效率低，见第8条：避免使用终结方法和清理方法
  * 2、代码更加简短、可读性更高

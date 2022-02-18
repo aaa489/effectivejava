@@ -1,6 +1,7 @@
 package com.example.effectivejava.construct;
 
 /**
+ * 《effective java》-2：遇到多个构造器参数时，考虑用构建者
  * 构造器模式来代替参数比较多的类构造
  * 1、构造时赋值清晰
  * 2、构造链路不会断
