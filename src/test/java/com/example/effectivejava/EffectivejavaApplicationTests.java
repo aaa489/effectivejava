@@ -33,11 +33,11 @@ class EffectivejavaApplicationTests {
 
     @Test
     void testComparable(){
-        Comparator<Number> comparator = Comparator.comparing(Number::getA);
+        Comparator<MyNumber> comparator = Comparator.comparing(MyNumber::getA);
 
-        Number number1 = new Number();
+        MyNumber number1 = new MyNumber();
         number1.setA(1);
-        Number number2 = new Number();
+        MyNumber number2 = new MyNumber();
         number2.setA(1);
         //int result = number1.compareTo(number2);
         int result = comparator.compare(number1, number2);

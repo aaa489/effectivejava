@@ -15,7 +15,7 @@ import java.util.Comparator;
  * @author Don
  * @date 2022/2/14.
  */
-public class Number implements Comparable<Number> {
+public class MyNumber implements Comparable<MyNumber> {
     private Integer a;
 
     //比较器进行比较
@@ -30,7 +30,7 @@ public class Number implements Comparable<Number> {
     }
 
     @Override
-    public int compareTo(Number o) {
+    public int compareTo(MyNumber o) {
         //return comparator.compare(a, o.getA());
         return Integer.compare(a, o.getA());
     }
