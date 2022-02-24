@@ -1,5 +1,8 @@
 package com.example.effectivejava;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 《effective java》-10：覆盖equals方法时请遵守通用约定
  * 1）覆盖Equal方法要遵从以下规约：
@@ -16,6 +19,10 @@ package com.example.effectivejava;
  * -------------------------------------------------
  * 《effective java》-12：始终要覆盖toString
  * 描述信息应该更简洁、有用
+ * -------------------------------------------------
+ *《effective java》-40：始终使用 Override 注解
+ * 应该在你认为要重写父类声明的每个方法声明上使用 Override 注解。这条规则有一个小例外， 如果
+ * 正在编写一个没有标记为抽象的类，并且确信它重写了其父类中的抽象方法。编译器可以保护免受很多错误的影响
  * @author Don
  * @date 2021/12/24.
  */
@@ -64,5 +71,35 @@ public class OverrideDemo {
     @Override
     public String toString(){
         return String.format("%s:%s", i, s);
+    }
+
+    public static class Bigram {
+        private final char first;
+        private final char second;
+
+        public Bigram(char first, char second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        //如果是重写父类的方法，要加注解@Override，否则就是覆盖
+        public boolean equals(Bigram b) {
+            return b.first == first && b.second == second;
+        }
+
+        public int hashCode() {
+            return 31 * first + second;
+        }
+    }
+
+    //这里没加注解，所以最终输出结果可能不是你想要的
+    public static void main(String[] args) {
+        Set<Bigram> s = new HashSet<>();
+        for (int i = 0; i < 10; i++) {
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                s.add(new Bigram(ch, ch));
+            }
+            System.out.println(s.size());
+        }
     }
 }
