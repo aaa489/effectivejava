@@ -21,6 +21,7 @@ public class LambdaClass {
 
         //匿名类方式
         Collections.sort(words, new Comparator<String>() {
+            @Override
             public int compare(String s1, String s2) {
                 return Integer.compare(s1.length(), s2.length());
             }

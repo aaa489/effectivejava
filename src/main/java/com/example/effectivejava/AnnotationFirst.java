@@ -87,5 +87,6 @@ public class AnnotationFirst {
                 }
             }
         }
-        System.out.printf("Passed: %d, Failed: %d%n", passed, tests - passed); }
+        System.out.printf("Passed: %d, Failed: %d%n", passed, tests - passed);
+    }
 }

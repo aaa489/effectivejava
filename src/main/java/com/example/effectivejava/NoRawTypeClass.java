@@ -1,10 +1,6 @@
 package com.example.effectivejava;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
