@@ -1,7 +1,7 @@
 package com.example.effectivejava;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.math.BigInteger;
+import java.util.*;
 
 /**
  * 《effective java》-10：覆盖equals方法时请遵守通用约定
@@ -93,7 +93,54 @@ public class OverrideDemo {
         }
     }
 
-    //这里没加注解，所以最终输出结果可能不是你想要的
+     /**
+       *《effective java》-52：明智审慎地使用重载
+       * 重载（overloaded）方法之间的选择是静态的（编译时），而重写（overridden）方法之间的选择是动态的（运行时）
+       * 一个安全和保守的策略是永远不要导出两个具有相同参数数量的重载
+       * 总是可以为方法赋予不同的名称，而不是重载它们（如 writeBoolean(boolean) 、 writeInt(int)）
+       * 不要在相同参数位置重载采用不同函数式接口的方法
+       * @author: Don
+       * @date: 2022/3/1 10:00
+       **/
+    public static class CollectionClassifier {
+        public static String classify(Set<?> s) { return "Set"; }
+        public static String classify(List<?> lst) { return "List"; }
+        public static String classify(Collection<?> c) { return "Unknown Collection"; }
+
+        //打印了三次 Unknown Collection 字符串，因为重载是编译时选择方法
+        public static void testOverload(){
+            Collection<?>[] collections = {
+                    new HashSet<String>(),
+                    new ArrayList<BigInteger>(),
+                    new HashMap<String, String>().values()
+            };
+            for (Collection<?> c : collections) {
+                System.out.println(classify(c));
+            }
+        }
+
+        //做了自动装箱，打印[-3, -2, -1] [-2, 0, 2]，不符合预期
+        public static void testRemove(){
+            Set<Integer> set = new TreeSet<>();
+            List<Integer> list = new ArrayList<>();
+            for (int i = -3; i < 3; i++) {
+                set.add(i);
+                list.add(i);
+            }
+            for (int i = 0; i < 3; i++) {
+                set.remove(i);
+                list.remove(i);
+            }
+            System.out.println(set + " " + list);
+        }
+
+        public static void main(String[] args) {
+            CollectionClassifier.testOverload();
+            CollectionClassifier.testRemove();
+        }
+    }
+
+    //这里没加注解@Override，所以最终输出结果可能不是你想要的
     public static void main(String[] args) {
         Set<Bigram> s = new HashSet<>();
         for (int i = 0; i < 10; i++) {
