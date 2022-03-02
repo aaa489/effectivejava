@@ -34,4 +34,15 @@ public class AcessClass {
     public void setName(String name) {
         this.name = name;
     }
+
+     /**
+       * 《effective java》-57：最小化局部变量的作用域
+       * 在首次使用的地方声明它
+       * 几乎每个局部变量声明都应该包含一个初始化器
+       * @author: Don
+       * @date: 2022/3/2 18:07
+       **/
+    public void minimizeScope(){
+
+    }
 }
